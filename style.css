@@ -1,0 +1,700 @@
+:root {
+    --bg: rgba(225, 225, 225, 0.25);
+    --text: #111;
+    --card: rgba(225, 225, 225, 0.25);
+    --nav: #ff4f9a;   /* 🌸 PINK NAVBAR */
+    --flame-color: black;
+}
+
+
+body.dark {
+    --bg: #0f0f0f;
+    --text: #f5f5f5;
+    --card:rgba(255, 255, 255, 0.15);
+    --nav:rgba(255, 255, 255, 0.15);
+    --flame-color: white;
+}
+
+body {
+    margin: 0;
+    font-family: Segoe UI, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+}
+
+/* FLAMES */
+.bg-flames {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.flame {
+    position: absolute;
+    opacity: 0.08;
+    animation: float 5s linear infinite;
+    color: var(--flame-color);
+}
+
+@keyframes float {
+    from { transform: translateY(110vh); }
+    to { transform: translateY(-200px); }
+}
+
+/* NAVBAR */
+.navbar {
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--nav);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 12px 16px;
+    z-index: 50;
+    box-sizing: border-box;
+    overflow: hidden; 
+    position: sticky;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-actions button {
+    margin-left: 10px;
+    border-radius: 25px;
+}
+
+/* MAIN */
+.main-wrapper {
+    height: 100vh;
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .main-card {
+    background: var(--card);
+    backdrop-filter: blur(50px);
+    padding: 60px;
+    border-radius: 25px;
+    text-align: center;
+} */
+
+.main-card {
+    background: rgba(255, 255, 255, 0.15); /* transparent */
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    padding: 60px;
+    border-radius: 25px;
+    text-align: center;
+
+    box-shadow: 0 40px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+
+.title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.names-row {
+    display: flex;
+    gap: 12px;
+}
+
+input, button, select {
+    padding: 12px;
+    margin: 10px 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+#checkBtn{
+    border-radius: 10px;
+    background: var(--nav);
+}
+
+#fontSize{
+    background:var(--card);
+}
+
+
+
+/* PANELS */
+.panel {
+    position: fixed;
+    top: 60px;
+    right: 0px;
+    left: auto;
+    width: 300px;
+    /* background: var(--card); */
+    background-color: var(--nav);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    /* border-radius: 15px; */
+    z-index: 20;
+}
+
+.hidden {
+    display: none;
+}
+
+/* TOGGLE SWITCH */
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    width: 50px;
+    height: 26px;
+    /* background: gray; */
+    background: var(--card);
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+}
+
+.slider::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    /* background: white; */
+    background: var(--nav);
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    transition: 0.3s;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(24px);
+}
+
+/* EMOJI */
+.emoji-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.emoji {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: explode 3s ease forwards;
+}
+
+@keyframes explode {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    60% { transform: translate(-50%, -50%) scale(6); }
+    100% { transform: translate(-50%, -50%) scale(8); opacity: 0; }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .names-row {
+        flex-direction: column;
+    }
+}
+
+#bgFlames {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.bg-flame {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.09;
+    filter: blur(1px);
+    animation: floatFlame linear infinite;
+}
+
+@keyframes floatFlame {
+    0%   { transform: translate(0, 0); }
+    50%  { transform: translate(var(--x), var(--y)); }
+    100% { transform: translate(0, 0); }
+}
+
+
+/* GLOWING BACKGROUND FLAMES */
+.bg-flame {
+    text-shadow:
+        0 0 6px var(--flame-color),
+        0 0 12px var(--flame-color),
+        0 0 24px var(--flame-color);
+}
+
+
+/* TOUCH RIPPLE EFFECT */
+.touch-ripple {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    pointer-events: none;
+
+    background: radial-gradient(
+        circle,
+        /* rgba(255,255,255,0.25) 0%,
+        rgba(255,255,255,0.3) 40%,
+        rgba(255,255,255,0.05) 70%, */
+        pink,
+        transparent 100%
+    );
+
+    transform: translate(-50%, -50%) scale(0);
+    animation: rippleExpand 0.8s ease-out forwards;
+    z-index: 9999;
+}
+
+/* Dark mode ripple */
+body.dark .touch-ripple {
+    background: radial-gradient(
+        circle,
+        rgba(255,255,255,0.8) 0%,
+        rgba(255,255,255,0.4) 40%,
+        rgba(255,255,255,0.1) 70%,
+        transparent 100%
+    );
+}
+
+@keyframes rippleExpand {
+    to {
+        transform: translate(-50%, -50%) scale(8);
+        opacity: 0;
+    }
+}
+
+
+
+
+/* MENU BUTTON */
+.menu-btn {
+    /* background: white; */
+    background: var(--card);
+    border: none;
+    border-radius: 12px;
+    padding: 8px 14px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* SIDE MENU */
+.side-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 260px;
+    height: calc(100vh - 60px);
+
+    background: var(--nav);
+    backdrop-filter: blur(25px);
+    padding: 20px;
+
+    box-shadow: 10px 0 30px rgba(0,0,0,0.25);
+    z-index: 30;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.side-menu.show {
+    transform: translateX(0);
+}
+
+.menu-section {
+    display: flex;
+    flex-direction: column;
+    /* gap: 12px; */
+    gap:6px;
+    margin-top: 10px;
+}
+
+.menu-label {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+
+.menu-section h4 {
+    margin: 0 0 6px;
+}
+
+#languageSelect{
+    border-radius: 15px;
+    background: var(--card);
+}
+
+option{
+    background:var(--card);
+}
+
+/* MENU BUTTONS */
+.side-menu button {
+    padding: 10px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    /* background: white; */
+    background: var(--card);
+    /* background:pink; */
+}
+
+.glow-logo {
+    font-size: 26px;
+    font-weight: bold;
+    color:var(--text);
+    /* color:white; */
+    text-shadow:
+        0 0 6px rgba(255,255,255,0.6),
+        0 0 14px rgba(255,105,180,0.8);
+}
+
+
+.menu-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    background: var(--card);
+    /* color: var(--nav); */
+    font-size: 14px;
+}
+
+/* Fix dropdown overlapping main content (critical) */
+.side-menu select {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+
+
+
+/* ================= VOICE MIC BUTTON ================= */
+.mic-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    /* background: #ff4f9a; */
+    background: var(--nav);
+    border: none;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+
+    /* box-shadow: 0 0 15px rgba(255,79,154,0.6); */
+    z-index: 200;
+}
+
+.mic-btn.listening {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px #ff4f9a; }
+    50% { box-shadow: 0 0 25px #ff4f9a; }
+    100% { box-shadow: 0 0 10px #ff4f9a; }
+}
+
+
+
+
+/* deleting the history */
+.history-item {
+    position: relative;
+    /* padding: 10px 40px 10px 10px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-btn {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: inherit;
+}
+
+/* 3-dot menu popup */
+.history-menu {
+    position: absolute;
+    top: 35px;
+    right: 15px;
+
+    background: var(--card);
+    color: var(--text);
+
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    /* padding: 10px; */
+
+    z-index: 999;
+}
+
+/* hide by default */
+.history-menu.hidden {
+    display: none;
+}
+
+.history-menu button {
+    background: none;
+    border: none;
+    padding: 8px 15px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    color: inherit;
+}
+
+/* .history-menu button:hover {
+    background: rgba(255, 105, 180, 0.2);
+} */
+
+
+
+/* =========================
+   📱 MOBILE DEVICES
+   ========================= */
+@media  (max-width: 600px) {
+
+    /* Navbar */
+    .logo,
+    .glow-logo {
+        font-size: 18px;
+    }
+
+    .navbar {
+        padding: 8px 12px;
+    }
+
+    /* Main Card */
+    .main-card {
+        transform: translateY(-50px);
+        padding: 30px 60px;
+        width: 50%;
+        border-radius: 18px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    /* Names → SERIES (vertical) */
+    .names-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction:row;
+        width: 100%;
+    }
+
+    .names-row input {
+        width: 85px;
+        padding: 10px;
+    }
+
+    /* Buttons */
+    #checkBtn {
+        width: 100%;
+    }
+
+    /* Side Menu */
+    .side-menu {
+        width: 220px;
+        padding: 15px;
+    }
+
+    .side-menu button{
+        width: 100%;
+        font-size: 14px;
+    }
+    #languageSelect{
+        width: 200px;
+        padding: 8px 12px;
+        font-size: 16px;
+        appearance: none;
+    }
+
+    /* Panels (History / Settings) */
+    .panel {
+        width: 50%;
+        right: 0;
+        left: 0;
+        border-radius: 0;
+    }
+
+    /* Mic Button */
+    .mic-btn {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+    #historyPanel {
+        height: calc(100vh - 60px);
+        bottom:0;
+    }
+    /* .menu-select{
+        font-size: 13px;
+    } */
+}
+
+
+
+/* =========================
+   📱 TABLET DEVICES
+   ========================= */
+@media (min-width: 601px) and (max-width: 900px) {
+
+    .navbar {
+        padding: 12px 15px;
+    }
+
+    /* Main Card */
+    .main-card {
+        width: 70%;
+        padding: 45px;
+    }
+
+    .title {
+        font-size: 40px;
+    }
+
+    /* Names → SERIES (vertical) */
+    .names-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .names-row input {
+        width: 100%;
+    }
+
+    /* Side Menu */
+    .side-menu {
+        width: 200px;
+    }
+
+    /* Navbar text */
+    .logo,
+    .glow-logo {
+        font-size: 20px;
+    }
+    
+    #historyPanel {
+        height: calc(100vh - 60px);
+        bottom:0;
+    }
+    
+    .side-menu button{
+        width: 100%;
+        font-size: 20px;
+    }
+        #languageSelect{
+        width: 200px;
+        padding: 8px 12px;
+        font-size: 16px;
+        appearance: none;
+    }
+}
+
+
+
+/* =========================
+   💻 LAPTOP & DESKTOP
+   ========================= */
+@media (min-width: 901px) {
+
+    /* Restore parallel inputs */
+    .names-row {
+        flex-direction: row;
+    }
+
+    .names-row input {
+        width: auto;
+    }
+
+    /* Full menu */
+    .side-menu {
+        width: 260px;
+    }
+
+    .main-card {
+        width: auto;
+    }
+        #historyPanel {
+        height: calc(100vh - 60px);
+        bottom:0;
+    }
+}
+
+
+
+
+select option{
+    background:var(--nav);
+}
+
+/* #historyPanel {
+    max-height: calc(100vh - 80px); 
+    overflow-y: auto;
+} */
+
+#historyPanel {
+    /* scrollbar-width: thin;          Firefox */
+    scrollbar-color: var(--text) transparent;
+}
+
+/* Chrome / Edge / Safari */
+#historyPanel::-webkit-scrollbar {
+    width: 6px;
+}
+
+#historyPanel::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+#historyList {
+    max-height: 100%;
+    overflow-y: auto;
+}

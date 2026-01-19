@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FLAMES</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="bgFlames"></div>
+
+    <button id="micBtn" class="mic-btn" title="Speak">🎤</button>
+
+    
+
+<!-- BACKGROUND FLAMES -->
+<div class="bg-flames" id="flamesContainer"></div>
+
+<!-- NAVBAR -->
+<!-- <nav class="navbar">
+    <div class="logo">FLAMES</div>
+    <div class="nav-actions">
+        <button id="historyBtn"> History</button>
+        <button id="settingsBtn">⚙ Settings</button>
+    </div>
+</nav> -->
+
+<nav class="navbar">
+    <button id="menuBtn" class="menu-btn">☰</button>
+
+    <h2 class="nav-title glow-logo">FLAMES</h2>
+</nav>
+
+<aside id="sideMenu" class="side-menu hidden">
+
+    <!-- MAIN OPTIONS -->
+    <div class="menu-section">
+        <button id="historyBtn"> History</button>
+        <button id="settingsBtn">⚙ Settings</button>
+    </div>
+
+    <!-- LANGUAGE COLUMN -->
+    <div class="menu-section">
+        <h4>🌐 Select your Language</h4>
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="ta">Tamil</option>
+            <option value="hi">Hindi</option>
+        </select>
+    </div>
+
+</aside>
+
+<!-- <div id="sideMenu" class="side-menu">
+
+    <button id="historyBtn">History</button>
+    <button id="settingsBtn">Settings</button>
+
+    <div class="menu-section">
+        <label for="languageSelect" class="menu-label">
+            🌐 Select your Language
+        </label>
+
+        <select id="languageSelect" class="menu-select">
+            <option value="en">English</option>
+            <option value="ta">Tamil</option>
+            <option value="hi">Hindi</option>
+        </select>
+    </div>
+
+</div> -->
+
+
+
+<!-- MAIN CONTENT -->
+<div class="main-wrapper">
+    <main class="main-card">
+        <h1 class="title">Let’s Play Flames</h1>
+
+        <div class="names-row">
+            <input id="name1" placeholder="First Name">
+            <input id="name2" placeholder="Second Name">
+        </div>
+
+        <button id="checkBtn">Reveal</button>
+        <div id="result" class="result-text"></div>
+    </main>
+</div>
+
+<!-- HISTORY PANEL -->
+<aside id="historyPanel" class="panel hidden">
+    <h3>History</h3>
+    <ul id="historyList"></ul>
+</aside>
+
+<!-- SETTINGS PANEL -->
+<div id="settingsPanel" class="panel hidden">
+    <h3>Settings</h3>
+
+    <label class="switch">
+        <input type="checkbox" id="darkMode">
+        <span class="slider"></span>
+        Dark Mode
+    </label>
+
+    <label>Font Size</label>
+    <select id="fontSize">
+        <option value="14">Small</option>
+        <option value="16" selected>Medium</option>
+        <option value="18">Large</option>
+    </select>
+    
+</select>
+
+</div>
+
+<!-- EMOJI OVERLAY -->
+<div id="emojiOverlay" class="emoji-overlay"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
